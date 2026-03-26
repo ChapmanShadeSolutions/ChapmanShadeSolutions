@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapman Shade Solutions</title>
+  <style>
+    :root {
+      --bg: #f7fafc;
+      --card: #ffffff;
+      --text: #1e293b;
+      --muted: #64748b;
+      --line: #e2e8f0;
+      --navy: #0b1736;
+      --navy-2: #142347;
+      --teal: #0f9f9a;
+      --teal-dark: #0b7f7b;
+      --soft: #ecfeff;
+      --shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+      --radius: 28px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: #ffffff;
+      line-height: 1.6;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.9);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 18px 0;
+    }
+
+    .brand-title {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: #0f172a;
+    }
+
+    .brand-subtitle {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      color: var(--teal-dark);
+      margin-top: 2px;
+    }
+
+    .nav {
+      display: flex;
+      gap: 26px;
+      font-size: 14px;
+      color: #334155;
+    }
+
+    .nav a:hover,
+    .link:hover { color: var(--teal-dark); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 14px 22px;
+      font-weight: 700;
+      font-size: 14px;
+      transition: 0.2s ease;
+      border: 1px solid transparent;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--navy);
+      color: white;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.12);
+    }
+
+    .btn-primary:hover { transform: translateY(-1px); }
+
+    .btn-teal {
+      background: var(--teal);
+      color: white;
+    }
+
+    .btn-teal:hover { background: var(--teal-dark); }
+
+    .btn-outline {
+      background: white;
+      color: #334155;
+      border-color: #cbd5e1;
+    }
+
+    .btn-outline:hover {
+      color: var(--teal-dark);
+      border-color: var(--teal-dark);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #e0f2fe 0%, #ffffff 45%, #ecfdf5 100%);
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(40px);
+      opacity: 0.55;
+      pointer-events: none;
+    }
+
+    .hero::before {
+      width: 240px;
+      height: 240px;
+      left: -40px;
+      top: 40px;
+      background: #bae6fd;
+    }
+
+    .hero::after {
+      width: 300px;
+      height: 300px;
+      right: -40px;
+      bottom: -20px;
+      background: #99f6e4;
+    }
+
+    .hero-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 42px;
+      align-items: center;
+      padding: 80px 0 96px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid #99f6e4;
+      background: rgba(255,255,255,0.8);
+      color: var(--teal-dark);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 650px;
+      font-size: clamp(40px, 6vw, 64px);
+      line-height: 1.05;
+      color: #0f172a;
+    }
+
+    .hero-copy p {
+      margin: 20px 0 0;
+      max-width: 640px;
+      font-size: 20px;
+      color: #475569;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .hero-card-wrap {
+      position: relative;
+    }
+
+    .hero-card {
+      border: 1px solid rgba(255,255,255,0.7);
+      background: rgba(255,255,255,0.78);
+      border-radius: 34px;
+      padding: 16px;
+      box-shadow: 0 25px 60px rgba(148, 163, 184, 0.25);
+      backdrop-filter: blur(12px);
+    }
+
+    .hero-card-inner {
+      border-radius: 26px;
+      background: linear-gradient(135deg, #0f172a, #18264e 55%, #0f766e);
+      color: white;
+      padding: 26px;
+      overflow: hidden;
+    }
+
+    .hero-card-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 24px;
+      align-items: center;
+    }
+
+    .small-pill {
+      display: inline-flex;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.1);
+      color: #ccfbf1;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+    }
+
+    .small-note {
+      color: #cbd5e1;
+      font-size: 14px;
+    }
+
+    .hero-logo {
+      width: 100%;
+      border-radius: 18px;
+      object-fit: contain;
+      background: rgba(255,255,255,0.04);
+      padding: 14px;
+    }
+
+    .highlight-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .highlight-box {
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.05);
+      color: #f8fafc;
+      padding: 14px;
+      font-size: 15px;
+      font-weight: 600;
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+    }
+
+    section {
+      padding: 92px 0;
+    }
+
+    .section-label {
+      color: var(--teal-dark);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.26em;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(30px, 4vw, 44px);
+      line-height: 1.15;
+      color: #0f172a;
+    }
+
+    .section-copy {
+      max-width: 760px;
+      margin-top: 16px;
+      color: #475569;
+      font-size: 19px;
+      line-height: 1.8;
+    }
+
+    .cards-3 {
+      margin-top: 34px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .service-card,
+    .gallery-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.05);
+      overflow: hidden;
+    }
+
+    .service-card {
+      padding: 30px;
+      transition: 0.2s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .service-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #e0f2fe, #ccfbf1);
+      margin-bottom: 20px;
+    }
+
+    .service-card h3,
+    .gallery-title {
+      margin: 0;
+      font-size: 24px;
+      line-height: 1.2;
+      color: #0f172a;
+    }
+
+    .service-card p,
+    .gallery-text {
+      margin: 12px 0 0;
+      color: #64748b;
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    .about {
+      background: #f8fafc;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .about-list-card {
+      background: white;
+      border-radius: 32px;
+      padding: 34px;
+      box-shadow: var(--shadow);
+    }
+
+    .about-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .about-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      color: #334155;
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .about-list li + li { margin-top: 14px; }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--teal);
+      margin-top: 10px;
+      flex: 0 0 auto;
+    }
+
+    .gallery-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: end;
+      margin-bottom: 30px;
+    }
+
+    .gallery-note {
+      color: #64748b;
+      font-size: 14px;
+    }
+
+    .gallery-card img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: contain;
+      background: #f8fafc;
+      padding: 8px;
+    }
+
+    .gallery-body {
+      padding: 22px;
+    }
+
+    .contact-card {
+      background: var(--navy);
+      color: white;
+      border-radius: 36px;
+      overflow: hidden;
+      box-shadow: 0 22px 60px rgba(15, 23, 42, 0.18);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 34px;
+      padding: 52px;
+    }
+
+    .contact-card .section-label { color: #5eead4; }
+    .contact-card p { color: #cbd5e1; }
+
+    .contact-panel {
+      background: rgba(255,255,255,0.06);
+      border-radius: 28px;
+      padding: 26px;
+    }
+
+    .meta-label {
+      color: #94a3b8;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      margin-bottom: 6px;
+    }
+
+    .meta-value {
+      color: white;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.5;
+      word-break: break-word;
+    }
+
+    .contact-item + .contact-item { margin-top: 16px; }
+
+    .phone-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .phone-row img {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      flex: 0 0 auto;
+      background: transparent;
+    }
+
+    .contact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .footer {
+      padding: 24px 0 50px;
+      color: #64748b;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    @media (max-width: 960px) {
+      .hero-grid,
+      .about-grid,
+      .contact-grid,
+      .cards-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .nav { display: none; }
+
+      .gallery-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: min(1120px, calc(100% - 20px));
+      }
+
+      .header-inner {
+        flex-wrap: wrap;
+      }
+
+      .hero-grid {
+        padding: 58px 0 70px;
+      }
+
+      h1 { font-size: 38px; }
+      .hero-copy p,
+      .section-copy,
+      .service-card p,
+      .about-list li { font-size: 16px; }
+
+      .contact-grid { padding: 24px; }
+      .highlight-grid { grid-template-columns: 1fr; }
+      .phone-row { align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div>
+        <div class="brand-title">Chapman Shade Solutions</div>
+        <div class="brand-subtitle">Florida shade, clean design</div>
+      </div>
+
+      <nav class="nav">
+        <a href="#services">Services</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#about">Why Us</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <a class="btn btn-teal" href="tel:2399893668">Call Now</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="pill">Veteran-Owned and Operated • Free Quotes</div>
+          <h1>Modern custom shade systems built for Florida living.</h1>
+          <p>
+            Clean, durable shade solutions for backyards, patios, driveways, and outdoor spaces.
+            Fully customizable, professionally installed, and designed to look sharp while protecting you and your investments from the Florida sun. Serving Punta Gorda, Port Charlotte, Fort Myers, and surrounding areas. Most installs completed in 2 days.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="tel:2399893668">Call or Text 239-989-3668</a>
+            <a class="btn btn-outline" href="#contact">Request a Quote</a>
+          </div>
+        </div>
+
+        <div class="hero-card-wrap">
+          <div class="hero-card">
+            <div class="hero-card-inner">
+              <div class="hero-card-top">
+                <span class="small-pill">Florida-ready</span>
+                <span class="small-note">Custom built</span>
+              </div>
+
+              <img class="hero-logo" src="logo.png" alt="Chapman Shade Solutions logo" />
+
+              <div class="highlight-grid">
+                <div class="highlight-box">Veteran-owned and operated</div>
+                <div class="highlight-box">Clean custom installs</div>
+                <div class="highlight-box">Built for Florida sun and weather</div>
+                <div class="highlight-box">Fast, free quotes</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-label">Services</div>
+        <h2>Shade solutions that look clean and work hard.</h2>
+        <div class="section-copy">
+          Built for function, style, and real Florida conditions without the bulky look of a permanent structure.
+        </div>
+
+        <div class="cards-3">
+          <article class="service-card">
+            <div class="service-icon"></div>
+            <h3>Backyard Shade Systems</h3>
+            <p>Custom shade coverage for patios, seating areas, pools, and outdoor living spaces.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon"></div>
+            <h3>Driveway &amp; Vehicle Coverage</h3>
+            <p>Practical coverage designed to help protect vehicles while keeping a clean, modern look.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon"></div>
+            <h3>Removable Hurricane-Ready Setup</h3>
+            <p>Built to be taken down quickly when needed without giving up strong everyday coverage.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about">
+      <div class="container about-grid">
+        <div>
+          <div class="section-label">Why choose us</div>
+          <h2>Built with a sharp look and a practical purpose.</h2>
+          <div class="section-copy">
+            Chapman Shade Solutions focuses on custom installs that improve comfort, coverage, and curb appeal.
+            Every setup is tailored to your space, with a clean modern feel and the flexibility Florida property owners need.
+          </div>
+        </div>
+
+        <div class="about-list-card">
+          <ul class="about-list">
+            <li><span class="dot"></span><span>Custom sizing for your space</span></li>
+            <li><span class="dot"></span><span>Color and finish options available</span></li>
+            <li><span class="dot"></span><span>Great for patios, entertainment areas, and driveways</span></li>
+            <li><span class="dot"></span><span>Designed to be removable when needed</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <div class="container">
+        <div class="gallery-header">
+          <div>
+            <div class="section-label">Gallery</div>
+            <h2>Real installs. Real Florida shade.</h2>
+          </div>
+          <div class="gallery-note">Your actual project photos are already wired into this version.</div>
+        </div>
+
+        <div class="cards-3">
+          <article class="gallery-card">
+            <img src="image1.jpg" alt="Driveway shade install" />
+            <div class="gallery-body">
+              <div class="gallery-title">Custom Shade Installation</div>
+              <div class="gallery-text">Professional install built for Florida conditions.</div>
+            </div>
+          </article>
+
+          <article class="gallery-card">
+            <img src="image2.jpg" alt="Vehicle under shade" />
+            <div class="gallery-body">
+              <div class="gallery-title">Vehicle Coverage</div>
+              <div class="gallery-text">Clean coverage that helps protect your vehicle from direct sun.</div>
+            </div>
+          </article>
+
+          <article class="gallery-card">
+            <img src="image3.jpg" alt="Side angle shade system" />
+            <div class="gallery-body">
+              <div class="gallery-title">Florida-Ready Setup</div>
+              <div class="gallery-text">Sharp, modern shade designed for driveways, patios, and outdoor spaces.</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-card">
+          <div class="contact-grid">
+            <div>
+              <div class="section-label">Contact</div>
+              <h2 style="color: white;">Get a free quote for your shade project.</h2>
+              <p class="section-copy" style="max-width: 540px;">
+                Reach out by phone, text, or email to get pricing and talk through your space.
+                Fast replies and straightforward estimates.
+              </p>
+            </div>
+
+            <div class="contact-panel">
+              <div class="contact-item">
+                <div class="meta-label">Phone</div>
+                <div class="phone-row">
+                  <a class="meta-value" href="tel:2399893668">239-989-3668</a>
+                  <img src="ega.png" alt="Eagle Globe and Anchor" />
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="meta-label">Email</div>
+                <a class="meta-value" href="mailto:chapmanshadesolutions@gmail.com">chapmanshadesolutions@gmail.com</a>
+              </div>
+
+              <div class="contact-item">
+                <div class="meta-label">Service Style</div>
+                <div class="meta-value" style="font-weight: 500;">Custom installs with a clean modern Florida look</div>
+              </div>
+
+              <div class="contact-actions">
+                <a class="btn btn-teal" href="tel:2399893668">Call Now</a>
+                <a class="btn" href="mailto:chapmanshadesolutions@gmail.com" style="border: 1px solid rgba(255,255,255,0.2); color: white; background: transparent;">Email Us</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="footer">
+    Chapman Shade Solutions • Veteran-owned and operated
+  </div>
+</body>
+</html>
