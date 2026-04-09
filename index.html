@@ -736,38 +736,38 @@
       line-height: 1.8;
     }
 
-    .reviews-note {
-      margin-top: 14px;
-      color: #64748b;
-      font-size: 14px;
-      line-height: 1.7;
+    .google-reviews-copy {
+      max-width: 560px;
+      margin-top: 16px;
+      color: #475569;
+      font-size: 18px;
+      line-height: 1.8;
     }
 
-    .read-reviews-wrap {
-      margin-top: 22px;
+    .google-reviews-wrap {
+      display: flex;
+      justify-content: center;
+      margin-top: 28px;
     }
 
-    .read-reviews-btn {
+    .google-reviews-btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 14px 22px;
+      padding: 16px 28px;
       border-radius: 999px;
-      background: white;
-      color: #0f172a;
-      border: 1px solid #cbd5e1;
-      font-size: 15px;
+      background: linear-gradient(135deg, #2563eb, #0f9f9a);
+      color: white;
+      font-size: 17px;
       font-weight: 800;
       letter-spacing: 0.02em;
+      box-shadow: 0 16px 34px rgba(15, 23, 42, 0.16);
       transition: 0.2s ease;
-      cursor: pointer;
     }
 
-    .read-reviews-btn:hover {
-      border-color: var(--teal);
-      color: var(--teal-dark);
-      transform: translateY(-1px);
-      box-shadow: 0 10px 22px rgba(15, 23, 42, 0.08);
+    .google-reviews-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.22);
     }
 
     .reviews-modal {
@@ -830,6 +830,16 @@
     .reviews-list {
       display: grid;
       gap: 16px;
+    }
+
+    .review-empty {
+      border: 1px dashed var(--line);
+      border-radius: 22px;
+      padding: 22px;
+      background: #f8fafc;
+      color: #64748b;
+      font-size: 16px;
+      text-align: center;
     }
 
     .review-item {
@@ -1293,72 +1303,20 @@
 
     <section id="reviews" class="reviews-section">
       <div class="container">
-        <div class="reviews-shell">
-          <div class="reviews-grid">
-            <div class="reviews-copy">
-              <div class="section-label">Reviews</div>
-              <h2>Leave a review about your install.</h2>
-              <p>
-                If you had a good experience, leave a quick rating and a few words about the job. Reviews help future customers feel confident reaching out.
-              </p>
-              <div class="reviews-note">
-                This section is set up as a clean review form in the site design. The submit button can be tied into email or a review service next.
-              </div>
-              <div class="read-reviews-wrap">
-                <button class="read-reviews-btn" type="button" id="open-reviews">Read Reviews</button>
-              </div>
-            </div>
-
-            <form class="review-form">
-              <div class="review-field">
-                <label class="review-label">Your name</label>
-                <input class="review-input" type="text" placeholder="Name" />
-              </div>
-
-              <div class="review-field">
-                <span class="review-label">Your rating</span>
-                <div class="star-row">
-                  <div class="star-option"><input type="radio" id="star1" name="rating" value="1"><label for="star1">★</label></div>
-                  <div class="star-option"><input type="radio" id="star2" name="rating" value="2"><label for="star2">★</label></div>
-                  <div class="star-option"><input type="radio" id="star3" name="rating" value="3"><label for="star3">★</label></div>
-                  <div class="star-option"><input type="radio" id="star4" name="rating" value="4"><label for="star4">★</label></div>
-                  <div class="star-option"><input type="radio" id="star5" name="rating" value="5"><label for="star5">★</label></div>
-                </div>
-              </div>
-
-              <div class="review-field">
-                <label class="review-label">Review</label>
-                <textarea class="review-textarea" placeholder="Tell people about your experience, the install, the look, and how it turned out."></textarea>
-              </div>
-
-              <button class="btn btn-primary review-submit" type="button">Submit Review</button>
-            </form>
+        <div class="reviews-shell" style="text-align: center;">
+          <div class="section-label">Reviews</div>
+          <h2>See our Google reviews or leave one of your own.</h2>
+          <p class="google-reviews-copy" style="margin-left:auto; margin-right:auto;">
+            Read what customers have said about their installs, or leave a review directly on Google.
+          </p>
+          <div class="google-reviews-wrap">
+            <a class="google-reviews-btn" href="https://g.page/r/CQAoh_8s-trgEAE/review" target="_blank" rel="noopener noreferrer">
+              Read & Leave a Google Review
+            </a>
           </div>
         </div>
       </div>
     </section>
-
-    <div class="reviews-modal" id="reviews-modal" aria-hidden="true">
-      <div class="reviews-modal-inner">
-        <div class="reviews-modal-top">
-          <div class="reviews-modal-title">Customer Reviews</div>
-          <button class="reviews-close" type="button" id="close-reviews" aria-label="Close reviews">×</button>
-        </div>
-        <div class="reviews-list">
-          <article class="review-item">
-            <div class="review-item-name">Customer Name</div>
-            <div class="review-item-stars">★★★★★</div>
-            <div class="review-item-text">Great communication, clean install, and the final setup looked even better than expected.</div>
-          </article>
-          <article class="review-item">
-            <div class="review-item-name">Happy Client</div>
-            <div class="review-item-stars">★★★★★</div>
-            <div class="review-item-text">Fast turnaround, solid work, and a huge difference in how usable the space feels now.</div>
-          </article>
-        </div>
-      </div>
-    </div>
-  </main>
 
   <div class="footer">
     Chapman Shade Solutions • Veteran-owned and operated • Call/Text 239-989-3668
@@ -1371,9 +1329,7 @@
       const openGalleryBtn = document.getElementById('open-gallery');
       const closeGalleryBtn = document.getElementById('close-gallery');
       const galleryModal = document.getElementById('gallery-modal');
-      const openReviewsBtn = document.getElementById('open-reviews');
-      const closeReviewsBtn = document.getElementById('close-reviews');
-      const reviewsModal = document.getElementById('reviews-modal');
+
       if (!slides.length) return;
 
       let currentIndex = 0;
@@ -1413,20 +1369,6 @@
         document.body.style.overflow = '';
       }
 
-      function openReviews() {
-        if (!reviewsModal) return;
-        reviewsModal.classList.add('open');
-        reviewsModal.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden';
-      }
-
-      function closeReviews() {
-        if (!reviewsModal) return;
-        reviewsModal.classList.remove('open');
-        reviewsModal.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
-      }
-
       if (nextBtn) {
         nextBtn.addEventListener('click', function () {
           nextSlide();
@@ -1457,26 +1399,9 @@
         });
       }
 
-      if (openReviewsBtn) {
-        openReviewsBtn.addEventListener('click', openReviews);
-      }
-
-      if (closeReviewsBtn) {
-        closeReviewsBtn.addEventListener('click', closeReviews);
-      }
-
-      if (reviewsModal) {
-        reviewsModal.addEventListener('click', function (event) {
-          if (event.target === reviewsModal) {
-            closeReviews();
-          }
-        });
-      }
-
       document.addEventListener('keydown', function (event) {
         if (event.key === 'Escape') {
           closeGallery();
-          closeReviews();
         }
       });
 
