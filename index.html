@@ -530,9 +530,9 @@
       inset: 0;
       background: rgba(2, 8, 23, 0.86);
       display: none;
-      align-items: center;
+      align-items: flex-start;
       justify-content: center;
-      padding: 24px;
+      padding: 110px 24px 24px;
       z-index: 100;
     }
 
@@ -988,6 +988,88 @@
     }
 
     @media (max-width: 640px) {
+      section {
+        padding: 48px 0;
+      }
+
+      .hero {
+        padding-top: 10px;
+      }
+
+      .hero-grid {
+        padding: 28px 0 34px;
+        gap: 20px;
+      }
+
+      .hero-copy p {
+        margin-top: 14px;
+      }
+
+      .hero-actions {
+        margin-top: 20px;
+      }
+
+      .hero-links {
+        margin-top: 14px;
+      }
+
+      .gallery-slider-wrap {
+        margin-top: 22px;
+      }
+
+      .cards-3 {
+        margin-top: 22px;
+        gap: 16px;
+      }
+
+      .gallery-header {
+        margin-bottom: 18px;
+      }
+
+      .contact-card,
+      .reviews-shell,
+      .why-card,
+      .service-card,
+      .gallery-slider {
+        border-radius: 24px;
+      }
+
+      .why-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .why-left {
+        text-align: left;
+      }
+
+      .why-left h2 {
+        font-size: 28px;
+      }
+
+      .why-left p {
+        font-size: 16px;
+        line-height: 1.7;
+      }
+
+      .why-card {
+        padding: 22px;
+      }
+
+      .why-card li {
+        font-size: 16px;
+        line-height: 1.6;
+      }
+
+      .gallery-modal {
+        padding: 120px 14px 18px;
+      }
+
+      .gallery-close {
+        width: 44px;
+        height: 44px;
+      }
+
       .gallery-modal-inner {
         padding: 18px;
       }
@@ -1012,9 +1094,7 @@
         flex-wrap: wrap;
       }
 
-      .hero-grid {
-        padding: 58px 0 70px;
-      }
+      
 
       h1 { font-size: 38px; }
       .hero-copy p,
